@@ -42,9 +42,9 @@ class _CarsState extends State<Cars> {
     }
 
     ButtonStyle buttonStyle = ButtonStyle(
-      backgroundColor: MaterialStateProperty.all<Color>(AppColors.secondaryText),
-      foregroundColor: MaterialStateProperty.all<Color>(AppColors.white),
-      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+      backgroundColor: WidgetStateProperty.all<Color>(AppColors.secondaryText),
+      foregroundColor: WidgetStateProperty.all<Color>(AppColors.white),
+      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
         RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.0),
         ),
@@ -56,7 +56,11 @@ class _CarsState extends State<Cars> {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text('Filtre', style: Theme.of(context).textTheme.titleMedium!.copyWith(color: AppColors.white)),
+        Text('Filtre',
+            style: Theme.of(context)
+                .textTheme
+                .titleMedium!
+                .copyWith(color: AppColors.white)),
         width4,
         Icon(Icons.filter_list, color: AppColors.white),
       ],
@@ -81,7 +85,8 @@ class _CarsState extends State<Cars> {
     ButtonStyle buttonStyleFilter = ElevatedButton.styleFrom(
         backgroundColor: AppColors.primaryText,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12), // Remplacez 10 par la valeur que vous voulez
+          borderRadius: BorderRadius.circular(
+              12), // Remplacez 10 par la valeur que vous voulez
         ));
 
     return Scaffold(
@@ -99,13 +104,19 @@ class _CarsState extends State<Cars> {
             child: LayoutBuilder(builder: (context, constraints) {
               if (constraints.maxWidth > 1200) {
                 return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 350.0, vertical: 8.0),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 350.0, vertical: 8.0),
                   child: Stack(
                     children: [
                       Column(
                         children: [
                           const BigTitle(title: 'Occasions'),
-                          Align(alignment: Alignment.centerLeft, child: ElevatedButton(onPressed: onPressed, style: buttonStyle, child: buttonContent)),
+                          Align(
+                              alignment: Alignment.centerLeft,
+                              child: ElevatedButton(
+                                  onPressed: onPressed,
+                                  style: buttonStyle,
+                                  child: buttonContent)),
                           height16,
 
                           /// The complete list of cars, filtered or not
@@ -130,30 +141,53 @@ class _CarsState extends State<Cars> {
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        FilteredBlock(label: "Prix minimum", hint: "3000 (€)", controller: minPriceController),
-                                        FilteredBlock(label: "Prix maximum", hint: "300000 (€)", controller: maxPriceController),
+                                        FilteredBlock(
+                                            label: "Prix minimum",
+                                            hint: "3000 (€)",
+                                            controller: minPriceController),
+                                        FilteredBlock(
+                                            label: "Prix maximum",
+                                            hint: "300000 (€)",
+                                            controller: maxPriceController),
                                       ],
                                     ),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        FilteredBlock(label: "Kilométrage minimum", hint: "10000 (km)", controller: minKilometersController),
-                                        FilteredBlock(label: "Kilométrage maximum", hint: "100000 (km)", controller: maxKilometersController),
+                                        FilteredBlock(
+                                            label: "Kilométrage minimum",
+                                            hint: "10000 (km)",
+                                            controller:
+                                                minKilometersController),
+                                        FilteredBlock(
+                                            label: "Kilométrage maximum",
+                                            hint: "100000 (km)",
+                                            controller:
+                                                maxKilometersController),
                                       ],
                                     ),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        FilteredBlock(label: "Année minimum", hint: "2000", controller: minYearController),
-                                        FilteredBlock(label: "Année maximum", hint: "2024", controller: maxYearController),
+                                        FilteredBlock(
+                                            label: "Année minimum",
+                                            hint: "2000",
+                                            controller: minYearController),
+                                        FilteredBlock(
+                                            label: "Année maximum",
+                                            hint: "2024",
+                                            controller: maxYearController),
                                       ],
                                     ),
                                   ),
@@ -161,7 +195,12 @@ class _CarsState extends State<Cars> {
                                     padding: const EdgeInsets.only(right: 8.0),
                                     child: Align(
                                         alignment: Alignment.bottomRight,
-                                        child: ElevatedButton(onPressed: onPressedFilter, style: buttonStyleFilter, child: Text("Appliquer", style: TextStyle(color: AppColors.white)))),
+                                        child: ElevatedButton(
+                                            onPressed: onPressedFilter,
+                                            style: buttonStyleFilter,
+                                            child: Text("Appliquer",
+                                                style: TextStyle(
+                                                    color: AppColors.white)))),
                                   ),
                                 ],
                               ),
@@ -174,13 +213,19 @@ class _CarsState extends State<Cars> {
                 );
               } else {
                 return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0, vertical: 8.0),
                   child: Stack(
                     children: [
                       Column(
                         children: [
                           const BigTitle(title: 'Occasions'),
-                          Align(alignment: Alignment.centerLeft, child: ElevatedButton(onPressed: onPressed, style: buttonStyle, child: buttonContent)),
+                          Align(
+                              alignment: Alignment.centerLeft,
+                              child: ElevatedButton(
+                                  onPressed: onPressed,
+                                  style: buttonStyle,
+                                  child: buttonContent)),
                           height16,
 
                           /// The complete list of cars, filtered or not
@@ -205,30 +250,53 @@ class _CarsState extends State<Cars> {
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        FilteredBlock(label: "Prix minimum", hint: "3000 (€)", controller: minPriceController),
-                                        FilteredBlock(label: "Prix maximum", hint: "300000 (€)", controller: maxPriceController),
+                                        FilteredBlock(
+                                            label: "Prix minimum",
+                                            hint: "3000 (€)",
+                                            controller: minPriceController),
+                                        FilteredBlock(
+                                            label: "Prix maximum",
+                                            hint: "300000 (€)",
+                                            controller: maxPriceController),
                                       ],
                                     ),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        FilteredBlock(label: "Kilométrage minimum", hint: "10000 (km)", controller: minKilometersController),
-                                        FilteredBlock(label: "Kilométrage maximum", hint: "100000 (km)", controller: maxKilometersController),
+                                        FilteredBlock(
+                                            label: "Kilométrage minimum",
+                                            hint: "10000 (km)",
+                                            controller:
+                                                minKilometersController),
+                                        FilteredBlock(
+                                            label: "Kilométrage maximum",
+                                            hint: "100000 (km)",
+                                            controller:
+                                                maxKilometersController),
                                       ],
                                     ),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        FilteredBlock(label: "Année minimum", hint: "2000", controller: minYearController),
-                                        FilteredBlock(label: "Année maximum", hint: "2024", controller: maxYearController),
+                                        FilteredBlock(
+                                            label: "Année minimum",
+                                            hint: "2000",
+                                            controller: minYearController),
+                                        FilteredBlock(
+                                            label: "Année maximum",
+                                            hint: "2024",
+                                            controller: maxYearController),
                                       ],
                                     ),
                                   ),
@@ -236,7 +304,12 @@ class _CarsState extends State<Cars> {
                                     padding: const EdgeInsets.only(right: 8.0),
                                     child: Align(
                                         alignment: Alignment.bottomRight,
-                                        child: ElevatedButton(onPressed: onPressedFilter, style: buttonStyleFilter, child: Text("Appliquer", style: TextStyle(color: AppColors.white)))),
+                                        child: ElevatedButton(
+                                            onPressed: onPressedFilter,
+                                            style: buttonStyleFilter,
+                                            child: Text("Appliquer",
+                                                style: TextStyle(
+                                                    color: AppColors.white)))),
                                   ),
                                 ],
                               ),

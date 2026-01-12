@@ -20,8 +20,10 @@ class ServiceContainer extends StatefulWidget {
 
 class _ServiceContainerState extends State<ServiceContainer> {
   bool isEditing = false;
-  late TextEditingController labelController = TextEditingController(text: widget.service.label);
-  late TextEditingController descriptionController = TextEditingController(text: widget.service.description);
+  late TextEditingController labelController =
+      TextEditingController(text: widget.service.label);
+  late TextEditingController descriptionController =
+      TextEditingController(text: widget.service.description);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,8 @@ class _ServiceContainerState extends State<ServiceContainer> {
       child: Column(
         children: [
           ClipRRect(
-            borderRadius: const BorderRadius.only(topLeft: Radius.circular(12), topRight: Radius.circular(12)),
+            borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(12), topRight: Radius.circular(12)),
             child: Stack(
               alignment: Alignment.topRight,
               children: [
@@ -41,7 +44,9 @@ class _ServiceContainerState extends State<ServiceContainer> {
                   width: 268.0,
                 ),
                 Visibility(
-                  visible: context.read<AuthenticationService>().typeOfLoggedUser == 'admin',
+                  visible:
+                      context.read<AuthenticationService>().typeOfLoggedUser ==
+                          'admin',
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: SizedBox(
@@ -66,10 +71,17 @@ class _ServiceContainerState extends State<ServiceContainer> {
                           });
                         },
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(isEditing ? AppColors.accent1 : AppColors.white),
-                          foregroundColor: MaterialStateProperty.all<Color>(AppColors.primaryText),
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(99.0))),
-                          padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.zero),
+                          backgroundColor: WidgetStateProperty.all<Color>(
+                              isEditing ? AppColors.accent1 : AppColors.white),
+                          foregroundColor: WidgetStateProperty.all<Color>(
+                              AppColors.primaryText),
+                          shape:
+                              WidgetStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(99.0))),
+                          padding: WidgetStateProperty.all<EdgeInsetsGeometry>(
+                              EdgeInsets.zero),
                         ),
                         child: const Icon(Icons.edit, size: 16.0),
                       ),

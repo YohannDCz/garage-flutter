@@ -21,7 +21,9 @@ class CustomDialog extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.0),
-        boxShadow: [BoxShadow(blurRadius: 10, color: Colors.black.withOpacity(0.1))],
+        boxShadow: [
+          BoxShadow(blurRadius: 10, color: Colors.black.withValues(alpha: 0.1))
+        ],
         color: AppColors.white,
       ),
       child: Column(
@@ -44,7 +46,8 @@ class CustomDialog extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: TextButton(
               onPressed: () {
-                BlocProvider.of<AuthenticationBloc>(context).add(ReAuthenticate());
+                BlocProvider.of<AuthenticationBloc>(context)
+                    .add(ReAuthenticate());
                 Navigator.pop(context);
               },
               child: const Text("Fermer"),

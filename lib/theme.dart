@@ -6,28 +6,76 @@ ThemeData appTheme = ThemeData(
 
   // Thème de texte
   primaryTextTheme: const TextTheme(
-    titleLarge: TextStyle(color: Color(0xFF57636C), fontSize: 22.0, fontWeight: FontWeight.normal, fontFamily: 'Montserrat'), // Title Large
-    titleMedium: TextStyle(color: Color(0xFF57636C), fontSize: 18.0, fontWeight: FontWeight.normal, fontFamily: 'Montserrat'), // Title Medium
-    titleSmall: TextStyle(color: Color(0xFF57636C), fontSize: 16.0, fontWeight: FontWeight.normal, fontFamily: 'Montserrat'), // Title Small
-    bodyLarge: TextStyle(color: Color(0xFF000000), fontSize: 16.0, fontWeight: FontWeight.normal, fontFamily: 'Source Sans Pro'), // Body Large
-    bodyMedium: TextStyle(color: Color(0xFF000000), fontSize: 14.0, fontWeight: FontWeight.normal, fontFamily: 'Source Sans Pro'), // Body Medium
-    bodySmall: TextStyle(color: Color(0xFF000000), fontSize: 12.0, fontWeight: FontWeight.normal, fontFamily: 'Source Sans Pro'), // Body Small
+    titleLarge: TextStyle(
+        color: Color(0xFF57636C),
+        fontSize: 22.0,
+        fontWeight: FontWeight.normal,
+        fontFamily: 'Montserrat'), // Title Large
+    titleMedium: TextStyle(
+        color: Color(0xFF57636C),
+        fontSize: 18.0,
+        fontWeight: FontWeight.normal,
+        fontFamily: 'Montserrat'), // Title Medium
+    titleSmall: TextStyle(
+        color: Color(0xFF57636C),
+        fontSize: 16.0,
+        fontWeight: FontWeight.normal,
+        fontFamily: 'Montserrat'), // Title Small
+    bodyLarge: TextStyle(
+        color: Color(0xFF000000),
+        fontSize: 16.0,
+        fontWeight: FontWeight.normal,
+        fontFamily: 'Source Sans Pro'), // Body Large
+    bodyMedium: TextStyle(
+        color: Color(0xFF000000),
+        fontSize: 14.0,
+        fontWeight: FontWeight.normal,
+        fontFamily: 'Source Sans Pro'), // Body Medium
+    bodySmall: TextStyle(
+        color: Color(0xFF000000),
+        fontSize: 12.0,
+        fontWeight: FontWeight.normal,
+        fontFamily: 'Source Sans Pro'), // Body Small
   ),
 
   // Couleurs de fond
   scaffoldBackgroundColor: const Color(0xFFf1f4f8),
-  indicatorColor: const Color(0xFFF9CF58),
 
   useMaterial3: true,
+  tabBarTheme: TabBarThemeData(indicatorColor: AppColors.warning),
 );
 
 class TextStyles {
-  static TextStyle headlineLarge = const TextStyle(color: Color(0xFF57636C), fontSize: 22.0, fontWeight: FontWeight.normal, fontFamily: 'Montserrat'); // Title Large
-  static TextStyle headlineMedium = const TextStyle(color: Color(0xFF57636C), fontSize: 18.0, fontWeight: FontWeight.normal, fontFamily: 'Montserrat'); // Title Medium
-  static TextStyle headlineSmall = const TextStyle(color: Color(0xFF57636C), fontSize: 16.0, fontWeight: FontWeight.normal, fontFamily: 'Montserrat'); // Title Small
-  static TextStyle bodyLarge = const TextStyle(color: Color(0xFF000000), fontSize: 16.0, fontWeight: FontWeight.normal, fontFamily: 'Source Sans Pro'); // Body Large
-  static TextStyle bodyMedium = const TextStyle(color: Color(0xFF000000), fontSize: 14.0, fontWeight: FontWeight.normal, fontFamily: 'Source Sans Pro'); // Body Medium
-  static TextStyle bodySmall = const TextStyle(color: Color(0xFF000000), fontSize: 12.0, fontWeight: FontWeight.normal, fontFamily: 'Source Sans Pro'); // Body Small
+  static TextStyle headlineLarge = const TextStyle(
+      color: Color(0xFF57636C),
+      fontSize: 22.0,
+      fontWeight: FontWeight.normal,
+      fontFamily: 'Montserrat'); // Title Large
+  static TextStyle headlineMedium = const TextStyle(
+      color: Color(0xFF57636C),
+      fontSize: 18.0,
+      fontWeight: FontWeight.normal,
+      fontFamily: 'Montserrat'); // Title Medium
+  static TextStyle headlineSmall = const TextStyle(
+      color: Color(0xFF57636C),
+      fontSize: 16.0,
+      fontWeight: FontWeight.normal,
+      fontFamily: 'Montserrat'); // Title Small
+  static TextStyle bodyLarge = const TextStyle(
+      color: Color(0xFF000000),
+      fontSize: 16.0,
+      fontWeight: FontWeight.normal,
+      fontFamily: 'Source Sans Pro'); // Body Large
+  static TextStyle bodyMedium = const TextStyle(
+      color: Color(0xFF000000),
+      fontSize: 14.0,
+      fontWeight: FontWeight.normal,
+      fontFamily: 'Source Sans Pro'); // Body Medium
+  static TextStyle bodySmall = const TextStyle(
+      color: Color(0xFF000000),
+      fontSize: 12.0,
+      fontWeight: FontWeight.normal,
+      fontFamily: 'Source Sans Pro'); // Body Small
 }
 
 class AppColors {

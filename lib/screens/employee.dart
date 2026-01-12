@@ -54,11 +54,16 @@ class _EmployeeState extends State<Employee> {
     String fileName = 'image_${DateTime.now().millisecondsSinceEpoch}.jpg';
     try {
       final file = File(image.path);
-      await Supabase.instance.client.storage.from('cars').upload(fileName, file);
+      await Supabase.instance.client.storage
+          .from('cars')
+          .upload(fileName, file);
     } catch (e) {
       throw Exception('Failed to upload image: $e');
     }
-    final imageUrl = Supabase.instance.client.storage.from('cars').getPublicUrl(fileName).toString();
+    final imageUrl = Supabase.instance.client.storage
+        .from('cars')
+        .getPublicUrl(fileName)
+        .toString();
     return imageUrl;
   }
 
@@ -71,9 +76,10 @@ class _EmployeeState extends State<Employee> {
   @override
   Widget build(BuildContext context) {
     ButtonStyle buttonStyle = ButtonStyle(
-      backgroundColor: MaterialStateProperty.all<Color>(AppColors.primary),
-      foregroundColor: MaterialStateProperty.all<Color>(AppColors.white),
-      shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(99.0))),
+      backgroundColor: WidgetStateProperty.all<Color>(AppColors.primary),
+      foregroundColor: WidgetStateProperty.all<Color>(AppColors.white),
+      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(99.0))),
     );
 
     Future onPressed() async {
@@ -92,7 +98,10 @@ class _EmployeeState extends State<Employee> {
               kilometers: int.parse(kilometerController.text),
               price: int.parse(priceController.text),
               year: int.parse(yearController.text),
-              equipments: equipmentsController.text.split('\n').map((equipment) => equipment.trim()).toList(),
+              equipments: equipmentsController.text
+                  .split('\n')
+                  .map((equipment) => equipment.trim())
+                  .toList(),
               image: imageUrl,
             ),
           ));
@@ -124,7 +133,9 @@ class _EmployeeState extends State<Employee> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(snapshot.data!), backgroundColor: AppColors.primaryText));
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text(snapshot.data!),
+                backgroundColor: AppColors.primaryText));
           });
         }
         return Scaffold(
@@ -133,7 +144,9 @@ class _EmployeeState extends State<Employee> {
           drawer: const MyDrawer(),
           body: Container(
             width: double.infinity,
-            height: MediaQuery.of(context).size.height - kToolbarHeight - MediaQuery.of(context).padding.top,
+            height: MediaQuery.of(context).size.height -
+                kToolbarHeight -
+                MediaQuery.of(context).padding.top,
             decoration: BoxDecoration(gradient: AppColors.gradient),
             child: SafeArea(
               child: SingleChildScrollView(
@@ -141,12 +154,15 @@ class _EmployeeState extends State<Employee> {
                   builder: (context, constraints) {
                     if (constraints.maxWidth > 1200) {
                       return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 350.0, vertical: 8.0),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 350.0, vertical: 8.0),
                         child: Column(
                           children: [
                             const BigTitle(title: 'Ajouter une voiture'),
                             Container(
-                              decoration: BoxDecoration(color: AppColors.white, borderRadius: BorderRadius.circular(16.0)),
+                              decoration: BoxDecoration(
+                                  color: AppColors.white,
+                                  borderRadius: BorderRadius.circular(16.0)),
                               width: double.infinity,
                               child: Padding(
                                 padding: const EdgeInsets.all(16.0),
@@ -154,24 +170,54 @@ class _EmployeeState extends State<Employee> {
                                   key: _formKey,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      FormFieldLabel(label: "Modèle", controller: modelController, hint: "Peugeot 406", validator: ValidatorService.validateLabel),
+                                      FormFieldLabel(
+                                          label: "Modèle",
+                                          controller: modelController,
+                                          hint: "Peugeot 406",
+                                          validator:
+                                              ValidatorService.validateLabel),
                                       height8,
-                                      FormFieldLabel(label: "Type", controller: typeController, hint: "Éléctrique", validator: ValidatorService.validateLabel),
+                                      FormFieldLabel(
+                                          label: "Type",
+                                          controller: typeController,
+                                          hint: "Éléctrique",
+                                          validator:
+                                              ValidatorService.validateLabel),
                                       height8,
-                                      FormFieldLabel(label: "Kilométrage", controller: kilometerController, hint: "10000 km", validator: ValidatorService.validateNumber),
+                                      FormFieldLabel(
+                                          label: "Kilométrage",
+                                          controller: kilometerController,
+                                          hint: "10000 km",
+                                          validator:
+                                              ValidatorService.validateNumber),
                                       height8,
-                                      FormFieldLabel(label: "Prix", controller: priceController, hint: "3000€", validator: ValidatorService.validateNumber),
+                                      FormFieldLabel(
+                                          label: "Prix",
+                                          controller: priceController,
+                                          hint: "3000€",
+                                          validator:
+                                              ValidatorService.validateNumber),
                                       height8,
-                                      FormFieldLabel(label: "Année de mise en circulation", controller: yearController, hint: "2000", validator: ValidatorService.validateNumber),
+                                      FormFieldLabel(
+                                          label: "Année de mise en circulation",
+                                          controller: yearController,
+                                          hint: "2000",
+                                          validator:
+                                              ValidatorService.validateNumber),
                                       height8,
                                       Align(
                                         alignment: Alignment.centerLeft,
                                         child: Padding(
-                                          padding: const EdgeInsets.only(left: 4.0),
-                                          child: Text("Image", style: Theme.of(context).textTheme.titleMedium),
+                                          padding:
+                                              const EdgeInsets.only(left: 4.0),
+                                          child: Text("Image",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleMedium),
                                         ),
                                       ),
                                       SizedBox(
@@ -185,20 +231,38 @@ class _EmployeeState extends State<Employee> {
                                               setState(() {});
                                             },
                                             style: ElevatedButton.styleFrom(
-                                                backgroundColor: AppColors.accent1,
-                                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-                                                padding: const EdgeInsets.symmetric(vertical: 16.0)),
-                                            child:
-                                                image != null ? Text("Image Choisie!", style: TextStyle(color: AppColors.white)) : Text('Choisir une image', style: TextStyle(color: AppColors.white))),
+                                                backgroundColor:
+                                                    AppColors.accent1,
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0)),
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        vertical: 16.0)),
+                                            child: image != null
+                                                ? Text("Image Choisie!",
+                                                    style: TextStyle(
+                                                        color: AppColors.white))
+                                                : Text('Choisir une image',
+                                                    style: TextStyle(
+                                                        color:
+                                                            AppColors.white))),
                                       ),
                                       height8,
                                       FormFieldLabel(
                                           label: "Équipements",
                                           controller: equipmentsController,
-                                          hint: "Bluetooth\n- Interieur cuir\n- Climatisation\n- Jantes alliage\n- Régulateur de vitesse",
+                                          hint:
+                                              "Bluetooth\n- Interieur cuir\n- Climatisation\n- Jantes alliage\n- Régulateur de vitesse",
                                           maxLines: 12),
                                       height8,
-                                      ElevatedButton(onPressed: onPressed, style: buttonStyle, child: isLoading ? const Spinner() : const Text('Envoyer')),
+                                      ElevatedButton(
+                                          onPressed: onPressed,
+                                          style: buttonStyle,
+                                          child: isLoading
+                                              ? const Spinner()
+                                              : const Text('Envoyer')),
                                     ],
                                   ),
                                 ),
@@ -206,18 +270,22 @@ class _EmployeeState extends State<Employee> {
                             ),
                             height16,
                             const BigTitle(title: "Modération avis"),
-                            Ratings(buttons: true, fetch: FetchFilteredRatings()),
+                            Ratings(
+                                buttons: true, fetch: FetchFilteredRatings()),
                           ],
                         ),
                       );
                     } else {
                       return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16.0, vertical: 8.0),
                         child: Column(
                           children: [
                             const BigTitle(title: 'Ajouter une voiture'),
                             Container(
-                              decoration: BoxDecoration(color: AppColors.white, borderRadius: BorderRadius.circular(16.0)),
+                              decoration: BoxDecoration(
+                                  color: AppColors.white,
+                                  borderRadius: BorderRadius.circular(16.0)),
                               width: double.infinity,
                               child: Padding(
                                 padding: const EdgeInsets.all(16.0),
@@ -225,24 +293,54 @@ class _EmployeeState extends State<Employee> {
                                   key: _formKey,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      FormFieldLabel(label: "Modèle", controller: modelController, hint: "Peugeot 406", validator: ValidatorService.validateLabel),
+                                      FormFieldLabel(
+                                          label: "Modèle",
+                                          controller: modelController,
+                                          hint: "Peugeot 406",
+                                          validator:
+                                              ValidatorService.validateLabel),
                                       height8,
-                                      FormFieldLabel(label: "Type", controller: typeController, hint: "Éléctrique", validator: ValidatorService.validateLabel),
+                                      FormFieldLabel(
+                                          label: "Type",
+                                          controller: typeController,
+                                          hint: "Éléctrique",
+                                          validator:
+                                              ValidatorService.validateLabel),
                                       height8,
-                                      FormFieldLabel(label: "Kilométrage", controller: kilometerController, hint: "10000 km", validator: ValidatorService.validateNumber),
+                                      FormFieldLabel(
+                                          label: "Kilométrage",
+                                          controller: kilometerController,
+                                          hint: "10000 km",
+                                          validator:
+                                              ValidatorService.validateNumber),
                                       height8,
-                                      FormFieldLabel(label: "Prix", controller: priceController, hint: "3000€", validator: ValidatorService.validateNumber),
+                                      FormFieldLabel(
+                                          label: "Prix",
+                                          controller: priceController,
+                                          hint: "3000€",
+                                          validator:
+                                              ValidatorService.validateNumber),
                                       height8,
-                                      FormFieldLabel(label: "Année de mise en circulation", controller: yearController, hint: "2000", validator: ValidatorService.validateNumber),
+                                      FormFieldLabel(
+                                          label: "Année de mise en circulation",
+                                          controller: yearController,
+                                          hint: "2000",
+                                          validator:
+                                              ValidatorService.validateNumber),
                                       height8,
                                       Align(
                                         alignment: Alignment.centerLeft,
                                         child: Padding(
-                                          padding: const EdgeInsets.only(left: 4.0),
-                                          child: Text("Image", style: Theme.of(context).textTheme.titleMedium),
+                                          padding:
+                                              const EdgeInsets.only(left: 4.0),
+                                          child: Text("Image",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleMedium),
                                         ),
                                       ),
                                       SizedBox(
@@ -256,20 +354,38 @@ class _EmployeeState extends State<Employee> {
                                               setState(() {});
                                             },
                                             style: ElevatedButton.styleFrom(
-                                                backgroundColor: AppColors.accent1,
-                                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-                                                padding: const EdgeInsets.symmetric(vertical: 16.0)),
-                                            child:
-                                                image != null ? Text("Image Choisie!", style: TextStyle(color: AppColors.white)) : Text('Choisir une image', style: TextStyle(color: AppColors.white))),
+                                                backgroundColor:
+                                                    AppColors.accent1,
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0)),
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        vertical: 16.0)),
+                                            child: image != null
+                                                ? Text("Image Choisie!",
+                                                    style: TextStyle(
+                                                        color: AppColors.white))
+                                                : Text('Choisir une image',
+                                                    style: TextStyle(
+                                                        color:
+                                                            AppColors.white))),
                                       ),
                                       height8,
                                       FormFieldLabel(
                                           label: "Équipements",
                                           controller: equipmentsController,
-                                          hint: "Bluetooth\n- Interieur cuir\n- Climatisation\n- Jantes alliage\n- Régulateur de vitesse",
+                                          hint:
+                                              "Bluetooth\n- Interieur cuir\n- Climatisation\n- Jantes alliage\n- Régulateur de vitesse",
                                           maxLines: 12),
                                       height8,
-                                      ElevatedButton(onPressed: onPressed, style: buttonStyle, child: isLoading ? const Spinner() : const Text('Envoyer')),
+                                      ElevatedButton(
+                                          onPressed: onPressed,
+                                          style: buttonStyle,
+                                          child: isLoading
+                                              ? const Spinner()
+                                              : const Text('Envoyer')),
                                     ],
                                   ),
                                 ),
@@ -277,7 +393,8 @@ class _EmployeeState extends State<Employee> {
                             ),
                             height16,
                             const BigTitle(title: "Modération avis"),
-                            Ratings(buttons: true, fetch: FetchFilteredRatings()),
+                            Ratings(
+                                buttons: true, fetch: FetchFilteredRatings()),
                           ],
                         ),
                       );

@@ -47,7 +47,9 @@ class _CarCardState extends State<CarCard> {
             mainAxisSize: MainAxisSize.max,
             children: [
               ClipRRect(
-                borderRadius: const BorderRadius.only(topLeft: Radius.circular(12), topRight: Radius.circular(12)),
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(12),
+                    topRight: Radius.circular(12)),
                 child: Image.network(
                   widget.car.image!,
                   width: double.infinity,
@@ -69,10 +71,17 @@ class _CarCardState extends State<CarCard> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Text(widget.car.model!, style: Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.bold)),
+                          Text(widget.car.model!,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleLarge!
+                                  .copyWith(fontWeight: FontWeight.bold)),
                           Text.rich(
                             TextSpan(
-                              style: Theme.of(context).textTheme.titleMedium!.copyWith(fontStyle: FontStyle.italic),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium!
+                                  .copyWith(fontStyle: FontStyle.italic),
                               children: [
                                 TextSpan(
                                   text: centaine(widget.car.price),
@@ -86,11 +95,18 @@ class _CarCardState extends State<CarCard> {
                         ],
                       ),
                       height4,
-                      Text(widget.car.type!, style: Theme.of(context).textTheme.titleMedium!.copyWith(color: AppColors.secondaryText)),
+                      Text(widget.car.type!,
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium!
+                              .copyWith(color: AppColors.secondaryText)),
                       height4,
                       Text.rich(
                         TextSpan(
-                          style: Theme.of(context).textTheme.titleMedium!.copyWith(fontStyle: FontStyle.italic),
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium!
+                              .copyWith(fontStyle: FontStyle.italic),
                           children: [
                             TextSpan(
                               text: centaine(widget.car.kilometers),
@@ -109,7 +125,10 @@ class _CarCardState extends State<CarCard> {
                           ? Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Equipements :", style: Theme.of(context).textTheme.titleMedium),
+                                Text("Equipements :",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium),
                                 ...?widget.car.equipments?.map((item) {
                                   return Text("- ${capitalize(item.trim())}");
                                 })
@@ -126,11 +145,14 @@ class _CarCardState extends State<CarCard> {
                 child: Padding(
                   padding: const EdgeInsets.only(right: 8.0, bottom: 8.0),
                   child: ElevatedButton(
-                    onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil('/about', (route) => false),
+                    onPressed: () => Navigator.of(context)
+                        .pushNamedAndRemoveUntil('/about', (route) => false),
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(AppColors.primary),
-                      foregroundColor: MaterialStateProperty.all<Color>(AppColors.white),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      backgroundColor:
+                          WidgetStateProperty.all<Color>(AppColors.primary),
+                      foregroundColor:
+                          WidgetStateProperty.all<Color>(AppColors.white),
+                      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12.0),
                         ),

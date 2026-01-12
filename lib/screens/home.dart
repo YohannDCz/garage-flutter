@@ -72,9 +72,10 @@ class _HomeState extends State<Home> {
     }
 
     ButtonStyle buttonStyle = ButtonStyle(
-      backgroundColor: MaterialStateProperty.all<Color>(AppColors.primary),
-      foregroundColor: MaterialStateProperty.all<Color>(AppColors.white),
-      shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(99.0))),
+      backgroundColor: WidgetStateProperty.all<Color>(AppColors.primary),
+      foregroundColor: WidgetStateProperty.all<Color>(AppColors.white),
+      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(99.0))),
     );
 
     return Scaffold(
@@ -90,19 +91,26 @@ class _HomeState extends State<Home> {
               builder: (context, constraints) {
                 if (constraints.maxWidth > 1200) {
                   return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 350.0, vertical: 8.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 350.0, vertical: 8.0),
                     child: Column(
                       children: [
                         const BigTitle(title: "Accueil"),
                         Container(
-                          decoration: BoxDecoration(color: AppColors.white, borderRadius: BorderRadius.circular(16.0)),
+                          decoration: BoxDecoration(
+                              color: AppColors.white,
+                              borderRadius: BorderRadius.circular(16.0)),
                           child: Column(
                             children: [
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
                                   'Services',
-                                  style: Theme.of(context).textTheme.titleLarge!.copyWith(decoration: TextDecoration.underline),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleLarge!
+                                      .copyWith(
+                                          decoration: TextDecoration.underline),
                                 ),
                               ),
                               Padding(
@@ -115,7 +123,8 @@ class _HomeState extends State<Home> {
                                     itemBuilder: (context, index) {
                                       if (index == 0) {
                                         return Padding(
-                                          padding: const EdgeInsets.only(left: 8.0),
+                                          padding:
+                                              const EdgeInsets.only(left: 8.0),
                                           child: Card(
                                             child: Column(
                                               children: [
@@ -123,7 +132,14 @@ class _HomeState extends State<Home> {
                                                   width: 286.0,
                                                   height: 124.0,
                                                   child: ClipRRect(
-                                                    borderRadius: const BorderRadius.only(topLeft: Radius.circular(12.0), topRight: Radius.circular(12.0)),
+                                                    borderRadius:
+                                                        const BorderRadius.only(
+                                                            topLeft:
+                                                                Radius.circular(
+                                                                    12.0),
+                                                            topRight:
+                                                                Radius.circular(
+                                                                    12.0)),
                                                     child: Image.network(
                                                       assets[index]["image"]!,
                                                       fit: BoxFit.cover,
@@ -131,19 +147,27 @@ class _HomeState extends State<Home> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsets.only(top: 8.0),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 8.0),
                                                   child: Text(
                                                     assets[index]["titre"]!,
-                                                    style: Theme.of(context).textTheme.titleSmall,
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .titleSmall,
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsets.all(8.0),
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
                                                   child: SizedBox(
                                                     width: 270.0,
                                                     child: Text(
-                                                      assets[index]["description"]!,
-                                                      style: Theme.of(context).textTheme.bodySmall,
+                                                      assets[index]
+                                                          ["description"]!,
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .bodySmall,
                                                     ),
                                                   ),
                                                 ),
@@ -159,7 +183,14 @@ class _HomeState extends State<Home> {
                                                 width: 286.0,
                                                 height: 124.0,
                                                 child: ClipRRect(
-                                                  borderRadius: const BorderRadius.only(topLeft: Radius.circular(12.0), topRight: Radius.circular(12.0)),
+                                                  borderRadius:
+                                                      const BorderRadius.only(
+                                                          topLeft:
+                                                              Radius.circular(
+                                                                  12.0),
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  12.0)),
                                                   child: Image.network(
                                                     assets[index]["image"]!,
                                                     fit: BoxFit.cover,
@@ -167,19 +198,26 @@ class _HomeState extends State<Home> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsets.only(top: 8.0),
+                                                padding: const EdgeInsets.only(
+                                                    top: 8.0),
                                                 child: Text(
                                                   assets[index]["titre"]!,
-                                                  style: Theme.of(context).textTheme.titleSmall,
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .titleSmall,
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsets.all(8.0),
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
                                                 child: SizedBox(
                                                   width: 270.0,
                                                   child: Text(
-                                                    assets[index]["description"]!,
-                                                    style: Theme.of(context).textTheme.bodySmall,
+                                                    assets[index]
+                                                        ["description"]!,
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .bodySmall,
                                                   ),
                                                 ),
                                               ),
@@ -196,14 +234,20 @@ class _HomeState extends State<Home> {
                         ),
                         height16,
                         Container(
-                          decoration: BoxDecoration(color: AppColors.white, borderRadius: BorderRadius.circular(16.0)),
+                          decoration: BoxDecoration(
+                              color: AppColors.white,
+                              borderRadius: BorderRadius.circular(16.0)),
                           child: Column(
                             children: [
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
                                   'Occasions',
-                                  style: Theme.of(context).textTheme.titleLarge!.copyWith(decoration: TextDecoration.underline),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleLarge!
+                                      .copyWith(
+                                          decoration: TextDecoration.underline),
                                 ),
                               ),
                               Padding(
@@ -220,16 +264,24 @@ class _HomeState extends State<Home> {
                                             var car = state.cars[index];
                                             if (index == 0) {
                                               return Padding(
-                                                padding: const EdgeInsets.only(left: 8.0),
-                                                child: CarCard(car: car, width: 285.0, height: 200),
+                                                padding: const EdgeInsets.only(
+                                                    left: 8.0),
+                                                child: CarCard(
+                                                    car: car,
+                                                    width: 285.0,
+                                                    height: 200),
                                               );
                                             } else {
-                                              return CarCard(car: car, width: 285.0, height: 200);
+                                              return CarCard(
+                                                  car: car,
+                                                  width: 285.0,
+                                                  height: 200);
                                             }
                                           },
                                         );
                                       } else {
-                                        return const Center(child: CircularProgressIndicator());
+                                        return const Center(
+                                            child: CircularProgressIndicator());
                                       }
                                     },
                                   ),
@@ -242,7 +294,9 @@ class _HomeState extends State<Home> {
                         Ratings(buttons: false, fetch: FetchRatings()),
                         height16,
                         Container(
-                          decoration: BoxDecoration(color: AppColors.white, borderRadius: BorderRadius.circular(16.0)),
+                          decoration: BoxDecoration(
+                              color: AppColors.white,
+                              borderRadius: BorderRadius.circular(16.0)),
                           width: double.infinity,
                           child: Padding(
                             padding: const EdgeInsets.all(16.0),
@@ -255,20 +309,41 @@ class _HomeState extends State<Home> {
                                 children: [
                                   Padding(
                                       padding: const EdgeInsets.only(top: 8.0),
-                                      child: Text("Ajouter un avis", style: Theme.of(context).textTheme.titleLarge!.copyWith(decoration: TextDecoration.underline))),
-                                  FormFieldLabel(label: "Titre", controller: titleController, hint: "Super garage !", validator: ValidatorService.validateLabel),
+                                      child: Text("Ajouter un avis",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleLarge!
+                                              .copyWith(
+                                                  decoration: TextDecoration
+                                                      .underline))),
+                                  FormFieldLabel(
+                                      label: "Titre",
+                                      controller: titleController,
+                                      hint: "Super garage !",
+                                      validator:
+                                          ValidatorService.validateLabel),
                                   height8,
-                                  FormFieldLabel(label: "Note", controller: rateController, hint: "4", validator: ValidatorService.validateRate),
+                                  FormFieldLabel(
+                                      label: "Note",
+                                      controller: rateController,
+                                      hint: "4",
+                                      validator: ValidatorService.validateRate),
                                   height8,
                                   FormFieldLabel(
                                     label: "Message",
                                     controller: messageController,
-                                    hint: "Je pense que ce garage a de l'avenir. En effet, il m'a aidé dans toute mes démarches !",
+                                    hint:
+                                        "Je pense que ce garage a de l'avenir. En effet, il m'a aidé dans toute mes démarches !",
                                     validator: ValidatorService.validateLabel,
                                     maxLines: 12,
                                   ),
                                   height8,
-                                  ElevatedButton(onPressed: onPressed, style: buttonStyle, child: isLoading ? const Spinner() : const Text('Envoyer')),
+                                  ElevatedButton(
+                                      onPressed: onPressed,
+                                      style: buttonStyle,
+                                      child: isLoading
+                                          ? const Spinner()
+                                          : const Text('Envoyer')),
                                 ],
                               ),
                             ),
@@ -280,19 +355,26 @@ class _HomeState extends State<Home> {
                   );
                 } else {
                   return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 8.0),
                     child: Column(
                       children: [
                         const BigTitle(title: "Accueil"),
                         Container(
-                          decoration: BoxDecoration(color: AppColors.white, borderRadius: BorderRadius.circular(16.0)),
+                          decoration: BoxDecoration(
+                              color: AppColors.white,
+                              borderRadius: BorderRadius.circular(16.0)),
                           child: Column(
                             children: [
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
                                   'Services',
-                                  style: Theme.of(context).textTheme.titleLarge!.copyWith(decoration: TextDecoration.underline),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleLarge!
+                                      .copyWith(
+                                          decoration: TextDecoration.underline),
                                 ),
                               ),
                               Padding(
@@ -305,7 +387,8 @@ class _HomeState extends State<Home> {
                                     itemBuilder: (context, index) {
                                       if (index == 0) {
                                         return Padding(
-                                          padding: const EdgeInsets.only(left: 8.0),
+                                          padding:
+                                              const EdgeInsets.only(left: 8.0),
                                           child: Card(
                                             child: Column(
                                               children: [
@@ -313,7 +396,14 @@ class _HomeState extends State<Home> {
                                                   width: 286.0,
                                                   height: 124.0,
                                                   child: ClipRRect(
-                                                    borderRadius: const BorderRadius.only(topLeft: Radius.circular(12.0), topRight: Radius.circular(12.0)),
+                                                    borderRadius:
+                                                        const BorderRadius.only(
+                                                            topLeft:
+                                                                Radius.circular(
+                                                                    12.0),
+                                                            topRight:
+                                                                Radius.circular(
+                                                                    12.0)),
                                                     child: Image.network(
                                                       assets[index]["image"]!,
                                                       fit: BoxFit.cover,
@@ -321,19 +411,27 @@ class _HomeState extends State<Home> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsets.only(top: 8.0),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 8.0),
                                                   child: Text(
                                                     assets[index]["titre"]!,
-                                                    style: Theme.of(context).textTheme.titleSmall,
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .titleSmall,
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsets.all(8.0),
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
                                                   child: SizedBox(
                                                     width: 270.0,
                                                     child: Text(
-                                                      assets[index]["description"]!,
-                                                      style: Theme.of(context).textTheme.bodySmall,
+                                                      assets[index]
+                                                          ["description"]!,
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .bodySmall,
                                                     ),
                                                   ),
                                                 ),
@@ -349,7 +447,14 @@ class _HomeState extends State<Home> {
                                                 width: 286.0,
                                                 height: 124.0,
                                                 child: ClipRRect(
-                                                  borderRadius: const BorderRadius.only(topLeft: Radius.circular(12.0), topRight: Radius.circular(12.0)),
+                                                  borderRadius:
+                                                      const BorderRadius.only(
+                                                          topLeft:
+                                                              Radius.circular(
+                                                                  12.0),
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  12.0)),
                                                   child: Image.network(
                                                     assets[index]["image"]!,
                                                     fit: BoxFit.cover,
@@ -357,19 +462,26 @@ class _HomeState extends State<Home> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsets.only(top: 8.0),
+                                                padding: const EdgeInsets.only(
+                                                    top: 8.0),
                                                 child: Text(
                                                   assets[index]["titre"]!,
-                                                  style: Theme.of(context).textTheme.titleSmall,
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .titleSmall,
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsets.all(8.0),
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
                                                 child: SizedBox(
                                                   width: 270.0,
                                                   child: Text(
-                                                    assets[index]["description"]!,
-                                                    style: Theme.of(context).textTheme.bodySmall,
+                                                    assets[index]
+                                                        ["description"]!,
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .bodySmall,
                                                   ),
                                                 ),
                                               ),
@@ -386,14 +498,20 @@ class _HomeState extends State<Home> {
                         ),
                         height16,
                         Container(
-                          decoration: BoxDecoration(color: AppColors.white, borderRadius: BorderRadius.circular(16.0)),
+                          decoration: BoxDecoration(
+                              color: AppColors.white,
+                              borderRadius: BorderRadius.circular(16.0)),
                           child: Column(
                             children: [
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
                                   'Occasions',
-                                  style: Theme.of(context).textTheme.titleLarge!.copyWith(decoration: TextDecoration.underline),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleLarge!
+                                      .copyWith(
+                                          decoration: TextDecoration.underline),
                                 ),
                               ),
                               Padding(
@@ -410,16 +528,24 @@ class _HomeState extends State<Home> {
                                             var car = state.cars[index];
                                             if (index == 0) {
                                               return Padding(
-                                                padding: const EdgeInsets.only(left: 8.0),
-                                                child: CarCard(car: car, width: 285.0, height: 200),
+                                                padding: const EdgeInsets.only(
+                                                    left: 8.0),
+                                                child: CarCard(
+                                                    car: car,
+                                                    width: 285.0,
+                                                    height: 200),
                                               );
                                             } else {
-                                              return CarCard(car: car, width: 285.0, height: 200);
+                                              return CarCard(
+                                                  car: car,
+                                                  width: 285.0,
+                                                  height: 200);
                                             }
                                           },
                                         );
                                       } else {
-                                        return const Center(child: CircularProgressIndicator());
+                                        return const Center(
+                                            child: CircularProgressIndicator());
                                       }
                                     },
                                   ),
@@ -432,7 +558,9 @@ class _HomeState extends State<Home> {
                         Ratings(buttons: false, fetch: FetchRatings()),
                         height16,
                         Container(
-                          decoration: BoxDecoration(color: AppColors.white, borderRadius: BorderRadius.circular(16.0)),
+                          decoration: BoxDecoration(
+                              color: AppColors.white,
+                              borderRadius: BorderRadius.circular(16.0)),
                           width: double.infinity,
                           child: Padding(
                             padding: const EdgeInsets.all(16.0),
@@ -445,20 +573,41 @@ class _HomeState extends State<Home> {
                                 children: [
                                   Padding(
                                       padding: const EdgeInsets.only(top: 8.0),
-                                      child: Text("Ajouter un avis", style: Theme.of(context).textTheme.titleLarge!.copyWith(decoration: TextDecoration.underline))),
-                                  FormFieldLabel(label: "Titre", controller: titleController, hint: "Super garage !", validator: ValidatorService.validateLabel),
+                                      child: Text("Ajouter un avis",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleLarge!
+                                              .copyWith(
+                                                  decoration: TextDecoration
+                                                      .underline))),
+                                  FormFieldLabel(
+                                      label: "Titre",
+                                      controller: titleController,
+                                      hint: "Super garage !",
+                                      validator:
+                                          ValidatorService.validateLabel),
                                   height8,
-                                  FormFieldLabel(label: "Note", controller: rateController, hint: "4", validator: ValidatorService.validateRate),
+                                  FormFieldLabel(
+                                      label: "Note",
+                                      controller: rateController,
+                                      hint: "4",
+                                      validator: ValidatorService.validateRate),
                                   height8,
                                   FormFieldLabel(
                                     label: "Message",
                                     controller: messageController,
-                                    hint: "Je pense que ce garage a de l'avenir. En effet, il m'a aidé dans toute mes démarches !",
+                                    hint:
+                                        "Je pense que ce garage a de l'avenir. En effet, il m'a aidé dans toute mes démarches !",
                                     validator: ValidatorService.validateLabel,
                                     maxLines: 12,
                                   ),
                                   height8,
-                                  ElevatedButton(onPressed: onPressed, style: buttonStyle, child: isLoading ? const Spinner() : const Text('Envoyer')),
+                                  ElevatedButton(
+                                      onPressed: onPressed,
+                                      style: buttonStyle,
+                                      child: isLoading
+                                          ? const Spinner()
+                                          : const Text('Envoyer')),
                                 ],
                               ),
                             ),
